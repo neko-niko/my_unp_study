@@ -20,6 +20,7 @@
 #include <stdarg.h>
 #include <arpa/inet.h>
 #include <sys/select.h>
+#include <netdb.h>
 #define	FILE_MODE	(S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
 					/* default file access permissions for new files */
 #define	DIR_MODE	(FILE_MODE | S_IXUSR | S_IXGRP | S_IXOTH)
@@ -86,3 +87,4 @@ ssize_t readlinebuf(void **ptr);
 void Writen(int fd, void *ptr, size_t n);
 ssize_t writen(int fd, const void *vptr, size_t n);
 char *sock_ntop(const struct sockaddr *sa, socklen_t salen);
+const char	*hstrerror(int);
