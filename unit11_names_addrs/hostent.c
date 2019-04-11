@@ -26,7 +26,6 @@ int main(int argc, int **argv){
                 err_ret("unknown address type");
                 break;
         }
-
     }
     exit(0);
 }
