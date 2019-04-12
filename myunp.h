@@ -97,3 +97,5 @@ int tcp_listen(const char *hostname, const char *service, socklen_t *addrlenp);
 int udp_client(const char *hostname, const char *service, struct sockaddr **saptr, socklen_t *lenp);
 int udp_connect(const char *hostnmae, const char *service);
 int udp_server(const char *hostname, const char *service, socklen_t *lenptr);
+ssize_t write_fd(int fd, void *ptr, size_t nbytes, int sendfd);
+ssize_t read_fd(int fd, void *ptr, size_t nbytes, int *recvfd);
