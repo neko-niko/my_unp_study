@@ -4,6 +4,8 @@
 #include <memory.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/eventfd.h>
+#include <sys/time.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <sys/time.h>
@@ -94,3 +96,4 @@ char	*gai_strerror(int);
 int tcp_listen(const char *hostname, const char *service, socklen_t *addrlenp);
 int udp_client(const char *hostname, const char *service, struct sockaddr **saptr, socklen_t *lenp);
 int udp_connect(const char *hostnmae, const char *service);
+int udp_server(const char *hostname, const char *service, socklen_t *lenptr);
