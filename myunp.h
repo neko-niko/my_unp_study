@@ -90,6 +90,7 @@ void Writen(int fd, void *ptr, size_t n);
 ssize_t writen(int fd, const void *vptr, size_t n);
 char *sock_ntop(const struct sockaddr *sa, socklen_t salen);
 const char	*hstrerror(int);
+char *sock_ntop_host(const struct sockaddr *sa, socklen_t salen);
 struct addrinfo *host_serv(const char *host, const char *service, int family, int socktype);
 int tcp_connect(const char *hostname, const char *service);
 char	*gai_strerror(int);
