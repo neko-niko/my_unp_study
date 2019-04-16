@@ -19,7 +19,7 @@ int main(int argc, char **argv){
     daemon_inetd(argv[0], 0);
     cliaddr = Malloc(sizeof(struct sockaddr_storage));
     len = sizeof(struct sockaddr_storage);
-    getpeername(0, cliaddr, &len);      //  已在inet父进程中将描述符重定向想socketfd
+    getpeername(0, cliaddr, &len);      //  已在inet父进程中将描述符重定向到socketfd
     err_msg("connection from %s", sock_ntop(cliaddr, len));
     ticks = time(NULL);
     snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(ticks));
