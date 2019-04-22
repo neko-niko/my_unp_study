@@ -23,6 +23,9 @@
 #include <arpa/inet.h>
 #include <sys/select.h>
 #include <netdb.h>
+#include <pthread.h>
+
+
 #define	FILE_MODE	(S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
 					/* default file access permissions for new files */
 #define	DIR_MODE	(FILE_MODE | S_IXUSR | S_IXGRP | S_IXOTH)
@@ -49,6 +52,11 @@
 #define	min(a,b)	((a) < (b) ? (a) : (b))
 #define	max(a,b)	((a) > (b) ? (a) : (b))
 #define bzero(ptr, n)    memset(ptr, 0, n)
+
+struct unp_in_pktinfo{
+	struct in_addr ipi_addr;
+	int ipi_ifindex;
+};
 typedef struct sockaddr SA;
 
 void	*Calloc(size_t, size_t);
@@ -100,4 +108,5 @@ int udp_connect(const char *hostnmae, const char *service);
 int udp_server(const char *hostname, const char *service, socklen_t *lenptr);
 ssize_t write_fd(int fd, void *ptr, size_t nbytes, int sendfd);
 ssize_t read_fd(int fd, void *ptr, size_t nbytes, int *recvfd);
-char* gf_time();
+char* gf_time();	
+int sockatmark(int fd);

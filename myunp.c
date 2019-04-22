@@ -848,3 +848,11 @@ sock_ntop_host(const struct sockaddr *sa, socklen_t salen)
 	}
     return (NULL);
 }
+
+int sockatmark(int fd){
+	int flag;
+	if (ioctl(fd, SIOCATMARK, &flag) < 0)
+		return -1;
+	return (flag != 0);
+
+}
