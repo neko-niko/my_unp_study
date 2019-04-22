@@ -1,5 +1,4 @@
 #include "./unpthread.h"
-#include "./myunp.h"
 
 void
 Pthread_create(pthread_t *tid, const pthread_attr_t *attr,
