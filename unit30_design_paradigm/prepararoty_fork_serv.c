@@ -9,7 +9,7 @@ int main(int argc, char **argv){
     int listenfd, i;
     socklen_t addrlen;
     void sig_int(int);
-    pid_t child_make(int, int, int);
+    pid_t child_make(int, int, int, long *);
     
     if (argc == 3)
         listenfd = tcp_listen(NULL, argv[1], &addrlen);
@@ -23,7 +23,7 @@ int main(int argc, char **argv){
     cptr = meter(nchildren);
 
     for (i = 0; i < nchildren; i++){
-        pids[i] = child_make(i, listenfd, addrlen);
+        pids[i] = child_make(i, listenfd, addrlen, cptr);
     }
 
     signal(SIGINT, sig_int);
@@ -51,14 +51,14 @@ void sig_int(int signo){
 }
 
 
-pid_t child_make(int i, int listenfd, int addrlen){
+pid_t child_make(int i, int listenfd, int addrlen, long *cptr){
     pid_t pid;
-    void child_main(int, int, int);
+    void child_main(int, int, int, long *);
 
     if ((pid = fork()) > 0)
         return (pid);
 
-    child_main(i, listenfd, addrlen);
+    child_main(i, listenfd, addrlen, cptr);
 
 }
 
