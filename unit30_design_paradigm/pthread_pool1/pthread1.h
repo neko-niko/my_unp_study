@@ -1,0 +1,13 @@
+#include "../../unpthread.h"
+typedef struct {
+    pthread_t thread_tid;
+    long thread_count;
+}   Thread;
+
+Thread *tprt;
+
+int listenfd, nthreads;
+socklen_t addrlen;
+pthread_mutex_t mlock;
+
+
