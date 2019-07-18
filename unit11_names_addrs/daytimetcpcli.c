@@ -10,6 +10,7 @@ int main(int argc, char **argv){
     struct hostent *hp;
     struct servent *sp;
 
+
     if (argc != 3)
         err_quit("usage: daytimetcpcli1 <hostname> <service>");
     

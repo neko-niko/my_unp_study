@@ -5,6 +5,7 @@ int main(int argc, int **argv){
     char str[INET_ADDRSTRLEN];
     struct hostent *hptr;
 
+
     while (--argc > 0){
         ptr = *++argv;
         if ( (hptr = gethostbyname(ptr)) == NULL){
